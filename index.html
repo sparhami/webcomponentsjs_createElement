@@ -13,9 +13,11 @@
 
         var fooOne = document.createElement('x-foo');
         var fooTwo = div.ownerDocument.createElement('x-foo');
+        var fooThree = div.ownerDocument.createElement('x-foo');
 
         console.log('fooOne instanceof', fooOne instanceof ctor);
         console.log('fooTwo instanceof', fooTwo instanceof ctor);
+        console.log('fooThree instanceof', fooThree instanceof ctor);
       
         div.appendChild(fooTwo);
       
@@ -23,6 +25,7 @@
 
         setTimeout(function() {
           console.log('fooTwo instanceof (after delay)', fooTwo instanceof ctor);
+          console.log('fooThree instanceof (after delay)', fooThree instanceof ctor);
         }, 100);
       });
     </script>
