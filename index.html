@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="node_modules/webcomponents.js/webcomponents.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+        var proto = Object.create(HTMLElement.prototype);
+        var ctor = document.registerElement('x-foo', {
+          prototype: proto
+        });
+
+        var div = document.createElement('div');
+        document.body.appendChild(div);
+
+        var fooOne = document.createElement('x-foo');
+        var fooTwo = div.ownerDocument.createElement('x-foo');
+
+        console.log('fooOne instanceof', fooOne instanceof ctor);
+        console.log('fooTwo instanceof', fooTwo instanceof ctor);
+      
+        div.appendChild(fooTwo);
+      
+        console.log('fooTwo instanceof (after append)', fooTwo instanceof ctor);
+
+        setTimeout(function() {
+          console.log('fooTwo instanceof (after delay)', fooTwo instanceof ctor);
+        }, 100);
+      });
+    </script>
+  </head>
+  <body></body>
+</html>
